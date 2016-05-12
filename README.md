@@ -41,9 +41,8 @@ Protospace
 
 ### prototype
 - belongs_to :user
-- has_many :images, as: :imageable
+- has_many :images
 - has_many :likes
-- has_many :tags, through: :prototypes_tags
 
 
 ### user
