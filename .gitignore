@@ -11,6 +11,8 @@
 /log/*
 !/log/.keep
 /tmp
+
+/public/uploads/
 *.png
 *.jpeg
 *.jpg
