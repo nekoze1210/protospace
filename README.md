@@ -17,7 +17,7 @@ Protospace
 |string|string   |  text |reference|
 
 ### Users
-|nickname|profile|position|occupation|
+|nickname|profile|member|occupation|
 |:---:|:--------:|:-----:|:-----:|
 |string|string   |  text |string|
 
