@@ -7,9 +7,8 @@ before_action :set_user, only: [:show, :edit, :update]
   end
 
   def update
-    flash[:success] = "ユーザー情報が更新されました。"
     @user.update(user_params)
-    render :show
+    redirect_to @user, notice: "ユーザー情報が更新されました。"
   end
 
   private
