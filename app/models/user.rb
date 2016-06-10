@@ -7,6 +7,5 @@ class User < ActiveRecord::Base
   validates :nickname, presence: true
 
   has_many :prototypes
-  has_many :images
 
 end

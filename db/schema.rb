@@ -11,18 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160606092910) do
+ActiveRecord::Schema.define(version: 20160610090639) do
 
-  create_table "images", force: :cascade do |t|
-    t.integer  "user_id",      limit: 4
-    t.integer  "prototype_id", limit: 4
+  create_table "protoimages", force: :cascade do |t|
+    t.integer  "role",         limit: 1,     default: 0, null: false
     t.text     "thumbnail",    limit: 65535
+    t.integer  "prototype_id", limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "images", ["prototype_id"], name: "index_images_on_prototype_id", using: :btree
-  add_index "images", ["user_id"], name: "index_images_on_user_id", using: :btree
+  add_index "protoimages", ["prototype_id"], name: "index_protoimages_on_prototype_id", using: :btree
 
   create_table "prototypes", force: :cascade do |t|
     t.string   "title",      limit: 255

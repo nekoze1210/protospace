@@ -1,8 +1,8 @@
 class Prototype < ActiveRecord::Base
 
   belongs_to :user
-  has_many :images
+  has_many :protoimages
 
-  accepts_nested_attributes_for :images
+  accepts_nested_attributes_for :protoimages
 
 end
