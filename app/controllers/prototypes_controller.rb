@@ -8,7 +8,7 @@ class PrototypesController < ApplicationController
 
   def new
     @proto = Prototype.new
-    @proto.images.build
+    @proto.protoimages.build
   end
 
   def create
@@ -35,6 +35,6 @@ class PrototypesController < ApplicationController
         :title,
         :catch_copy,
         :concept,
-        images_attributes:[:thumbnail, :user_id]).merge(user_id: current_user.id)
+        protoimages_attributes:[:thumbnail, :role]).merge(user_id: current_user.id)
     end
 end

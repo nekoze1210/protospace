@@ -5,18 +5,19 @@
         .col-md-12
           = f.text_field :title, class: 'proto-new-title', placeholder: 'Title'
       .row
-        = f.fields_for :images do |i|
-          .col-md-12
-            .cover-image-upload
-              = i.file_field :thumbnail, value: current_user.id
+        .col-md-12
+          .cover-image-upload
+            = f.fields_for :protoimages do |i|
+              = i.file_field :thumbnail
+              = i.hidden_field :role, value: :main
           .col-md-12
             %ul.proto-sub-list.list-group
               - 3.times do
                 %li.list-group-item.col-md-4
                   .image-upload
-                    = f.fields_for :images do |i|
+                    = f.fields_for :protoimages do |i|
                       = i.file_field :thumbnail
-                      = i.hidden_field :user_id, value: current_user.id
+                      = i.hidden_field :role, value: :sub
               / %li.list-group-item.col-md-4
               /   .image-upload-plus
               /     %span + JS時に使用
