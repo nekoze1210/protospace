@@ -1,0 +1,21 @@
+.container.proto-list
+  .row
+    - @protos.each do |proto|
+      .col-sm-4.col-md-3.proto-content
+        .thumbnail
+          = link_to image_tag(proto.protoimages.main.first.thumbnail), prototype_path(proto)
+          .caption
+            %h3
+              = link_to proto.title, prototype_path(proto)
+            .proto-meta
+              .proto-user
+                = link_to "by #{proto.user.nickname}", user_path(proto.user)
+              .proto-posted
+                = proto.created_at.strftime('%b %d')
+            %ul.proto-tag-list.list-inline
+              %li
+                %a{href: "#", class: "btn btn-default"} tag1
+              %li
+                %a{href: "#", class: "btn btn-default"} tag2
+
+= paginate(@protos)

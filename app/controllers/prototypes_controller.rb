@@ -1,9 +1,13 @@
 class PrototypesController < ApplicationController
+  before_action :set_proto, only: [:show, :edit, :destroy]
 
   def index
+    @protos = Prototype.includes(:user).order('created_at DESC').page(params[:page]).per(12)
   end
 
   def show
+    @user = @proto.user
+    @images = @proto.protoimages
   end
 
   def new
@@ -30,6 +34,10 @@ class PrototypesController < ApplicationController
   end
 
   private
+    def set_proto
+      @proto = Prototype.find(params[:id])
+    end
+
     def proto_params
       params.require(:prototype).permit(
         :title,
