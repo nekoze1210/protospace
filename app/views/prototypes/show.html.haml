@@ -10,10 +10,14 @@
         .media-body
           %h4#top-aligned-media.media-heading
             = @proto.title
+            = link_to 'edit', edit_prototype_path(@proto), class:'btn btn-xs navbar-inverse'
+            = link_to 'delete', prototype_path(@proto), method: :delete, class: 'btn btn-xs navbar-inverse btn-delete'
           .proto-user
             = link_to "by #{@user.nickname}", user_path(@user)
-            %span.degree
+            %p.degree
               = @user.member
+              ／
+              = @user.work
     .col-md-6.text-right
       %button.btn.btn-default
         = image_tag("icon_heart.svg")

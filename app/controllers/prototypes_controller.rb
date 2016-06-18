@@ -1,5 +1,5 @@
 class PrototypesController < ApplicationController
-  before_action :set_proto, only: [:show, :edit, :destroy]
+  before_action :set_proto, except: [:index, :new, :create]
 
   def index
     @protos = Prototype.includes(:user).order('created_at DESC').page(params[:page]).per(12)
@@ -18,19 +18,29 @@ class PrototypesController < ApplicationController
   def create
     @proto = Prototype.new(proto_params)
     if @proto.save
-      redirect_to root_path, notice: 'done'
+      redirect_to root_path, notice: 'Your prototype has created successfully.'
     else
+      flash.now[:alert] = 'Error: Please Fill in all blank form !'
       render :new
     end
   end
 
   def edit
+    @subs = @proto.protoimages.sub
   end
 
   def update
+    if @proto.update(proto_params)
+      redirect_to prototype_path(@proto), notice: 'Your prototype has updated successfully.'
+    else
+      flash.now[:alert] = 'Error: Please Fill in all blank form !'
+      render :edit
+    end
   end
 
   def destroy
+    @proto.destroy
+    redirect_to root_path, notice: 'Your prototype has just deleted.'
   end
 
   private
@@ -39,10 +49,10 @@ class PrototypesController < ApplicationController
     end
 
     def proto_params
-      params.require(:prototype).permit(
+      params.require(:prototype).permit( \
         :title,
         :catch_copy,
         :concept,
-        protoimages_attributes:[:thumbnail, :role]).merge(user_id: current_user.id)
+        protoimages_attributes:[ :id, :thumbnail, :role, :prototype_id, :_destroy]).merge(user_id: current_user.id)
     end
 end
