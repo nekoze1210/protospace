@@ -5,4 +5,7 @@ class Protoimage < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :prototype
+
+  validates :role,
+            inclusion: {in: Protoimage.roles.keys}
 end
