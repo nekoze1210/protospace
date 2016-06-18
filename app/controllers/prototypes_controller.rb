@@ -18,8 +18,9 @@ class PrototypesController < ApplicationController
   def create
     @proto = Prototype.new(proto_params)
     if @proto.save
-      redirect_to root_path, notice: 'done'
+      redirect_to root_path, notice: 'Your prototype has created successfully.'
     else
+      flash.now[:alert] = 'Error: Please Fill in all blank form !'
       render :new
     end
   end
@@ -30,15 +31,16 @@ class PrototypesController < ApplicationController
 
   def update
     if @proto.update(proto_params)
-      redirect_to prototype_path(@proto), notice: 'Your prototype is updated successfully'
+      redirect_to prototype_path(@proto), notice: 'Your prototype has updated successfully.'
     else
+      flash.now[:alert] = 'Error: Please Fill in all blank form !'
       render :edit
     end
   end
 
   def destroy
     @proto.destroy
-    redirect_to root_path, notice: 'Your prototype is deleted'
+    redirect_to root_path, notice: 'Your prototype has just deleted.'
   end
 
   private
