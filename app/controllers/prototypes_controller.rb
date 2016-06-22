@@ -20,7 +20,7 @@ class PrototypesController < ApplicationController
     if @proto.save
       redirect_to root_path, notice: 'Your prototype has created successfully.'
     else
-      flash.now[:alert] = 'Error: Please Fill in all blank form !'
+      flash.now[:alert] = 'Error: Please Fill in all blanks !'
       render :new
     end
   end
@@ -53,6 +53,12 @@ class PrototypesController < ApplicationController
         :title,
         :catch_copy,
         :concept,
-        protoimages_attributes:[ :id, :thumbnail, :role, :prototype_id, :_destroy]).merge(user_id: current_user.id)
+        protoimages_attributes:[
+          :id,
+          :thumbnail,
+          :role,
+          :prototype_id,
+          :_destroy]).merge(
+            user_id: current_user.id)
     end
 end
