@@ -8,6 +8,8 @@ class PrototypesController < ApplicationController
   def show
     @user = @proto.user
     @images = @proto.protoimages
+    @comments = @proto.comments.includes(:prototype)
+    @comment = @proto.comments.new(prototype_id: @proto.id) if user_signed_in?
   end
 
   def new
