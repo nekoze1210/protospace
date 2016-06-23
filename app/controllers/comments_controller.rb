@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :set_proto
+  before_action :set_proto, only: :create
 
   def create
     @proto.comments.create(comment_params)
