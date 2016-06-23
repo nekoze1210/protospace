@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root "prototypes#index"
   resources :prototypes do
     resources :likes, only: [:create, :destroy]
+    resources :comments, only: :create
   end
   resources :users, only: [:index, :show, :edit, :update]
   # The priority is based upon order of creation: first created -> highest priority.
