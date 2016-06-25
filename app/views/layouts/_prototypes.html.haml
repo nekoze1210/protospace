@@ -1,6 +1,6 @@
 .container.proto-list
   .row
-    - @protos.each do |proto|
+    - protos.each do |proto|
       .col-sm-4.col-md-3.proto-content
         .thumbnail
           = link_to image_tag(proto.protoimages.main.first.thumbnail), prototype_path(proto)
@@ -18,4 +18,4 @@
               %li
                 %a{href: "#", class: "btn btn-default"} tag2
 
-= paginate(@protos)
+= paginate(protos)
