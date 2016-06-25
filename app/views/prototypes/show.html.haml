@@ -54,7 +54,7 @@
       %span.num
         = "( #{@comments.count} )"
     .col-md-8#js-render-comments
-      = render partial: 'comments/comment', collection: @comments
+      = render partial: 'comment', collection: @comments
     = form_for [@proto, @comment], class: 'form-inline', remote: true do |f|
       %h4.col-md-12 Write a comment
       .row

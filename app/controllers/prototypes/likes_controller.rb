@@ -1,5 +1,5 @@
-class LikesController < ApplicationController
-  before_action :set_proto
+class Prototypes::LikesController < ApplicationController
+  before_action :set_proto, only: [:create, :destroy]
 
   def create
     @proto.likes.create(like_params)

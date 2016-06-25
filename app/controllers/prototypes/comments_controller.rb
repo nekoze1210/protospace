@@ -1,4 +1,4 @@
-class CommentsController < ApplicationController
+class Prototypes::CommentsController < ApplicationController
   before_action :set_proto, only: :create
 
   def create
