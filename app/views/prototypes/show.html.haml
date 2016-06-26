@@ -20,7 +20,7 @@
               = @user.work
     .col-md-6.text-right
       #like-button
-        =render partial: 'like', locals: {proto: @proto}
+        =render partial: 'like', locals: { proto: @proto }
   .row
     .col-md-9
       = image_tag(@images.main.first.thumbnail, class: 'img-responsive')
@@ -51,8 +51,8 @@
   .row.proto-comments
     %h4.col-md-12
       Comments
-      %span.num
-        = "( #{@comments.count} )"
+      %span.num#js-comment-counts
+        = "(#{@comments.count})"
     .col-md-8#js-render-comments
       = render partial: 'comment', collection: @comments
     = form_for [@proto, @comment], class: 'form-inline', remote: true do |f|
