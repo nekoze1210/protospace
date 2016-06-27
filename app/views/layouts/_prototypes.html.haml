@@ -13,9 +13,8 @@
               .proto-posted
                 = proto.created_at.strftime('%b %d')
             %ul.proto-tag-list.list-inline
-              %li
-                %a{href: "#", class: "btn btn-default"} tag1
-              %li
-                %a{href: "#", class: "btn btn-default"} tag2
+              - proto.tags.each do |tag|
+                %li
+                  = link_to tag.name, tag_path(tag), class: "btn btn-default"
 
 = paginate(protos)
