@@ -1,0 +1,10 @@
+= render 'layouts/main_visual'
+.container
+  .row
+    .col-sm-12.proto-list
+      .thumbnail
+        = button_tag @tag.name, class:'btn btn-tag'
+        .tag-meta
+          = link_to "#{@tag.taggings_count}Projects", tag_path(@tag.id), class:'label label-default tag-list-number'
+
+= render partial: 'layouts/prototypes', locals: { protos: @protos }

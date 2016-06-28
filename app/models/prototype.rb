@@ -7,6 +7,8 @@ class Prototype < ActiveRecord::Base
   validates :title, presence: true
   accepts_nested_attributes_for :protoimages, allow_destroy: true
 
+  acts_as_taggable
+
   def liked_by(user_id)
    likes.find_by(user_id: user_id)
   end

@@ -10,6 +10,7 @@ class PrototypesController < ApplicationController
     @images = @proto.protoimages
     @comments = @proto.comments.includes(:prototype)
     @comment = @proto.comments.new(prototype_id: @proto.id) if user_signed_in?
+    @tags = @proto.tags
   end
 
   def new
@@ -61,6 +62,7 @@ class PrototypesController < ApplicationController
           :role,
           :prototype_id,
           :_destroy]).merge(
-            user_id: current_user.id)
+            user_id: current_user.id,
+            tag_list: params[:prototype][:tag])
     end
 end
