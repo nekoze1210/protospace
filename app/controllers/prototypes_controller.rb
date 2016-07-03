@@ -2,7 +2,7 @@ class PrototypesController < ApplicationController
   before_action :set_proto, except: [:index, :new, :create]
 
   def index
-    @protos = Prototype.includes(:user).order("RAND()").page(params[:page]).per(12)
+    @protos = Prototype.includes(:user).order("RAND()").page(params[:page]).per(13)
   end
 
   def show
