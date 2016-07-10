@@ -8,4 +8,6 @@ class Protoimage < ActiveRecord::Base
 
   validates :role,
             inclusion: {in: Protoimage.roles.keys}
+
+  validates :thumbnail, presence: true
 end
