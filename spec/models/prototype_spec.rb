@@ -2,18 +2,20 @@ require 'rails_helper'
 
 describe Prototype do
   describe 'associations' do
+    let(:proto) { create(:prototype) }
+    let(:user){ create(:user) }
 
     describe 'with user' do
+      let!(:user) { attributes_for(:user) }
+      let!(:proto) {attributes_for(:prototype)}
       it 'is associated with an user' do
-        user = create(:user)
-        proto = create(:prototype, user: user)
-        expect(proto.user).to eq user
+        proto.merge!(user: user)
+        expect(proto[:user]).to eq user
       end
     end
 
     describe 'with comments' do
       it 'deletes the comments when Prototype is deleted' do
-        proto = create(:prototype)
         comment = create(:comment, prototype: proto)
         expect { proto.destroy }.to change{ Comment.count }.by(-1)
       end
@@ -21,7 +23,6 @@ describe Prototype do
 
     describe 'with likes' do
       it 'deletes the likes when Prototype is deleted' do
-        proto = create(:prototype)
         like = create(:like, prototype: proto)
         expect { proto.destroy }.to change { Like.count }.by(-1)
       end
