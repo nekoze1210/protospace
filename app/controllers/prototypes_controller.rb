@@ -1,4 +1,5 @@
 class PrototypesController < ApplicationController
+  before_action :authenticate_user!, except:[:index, :show]
   before_action :set_proto, except: [:index, :new, :create]
 
   def index
@@ -57,12 +58,11 @@ class PrototypesController < ApplicationController
         :catch_copy,
         :concept,
         protoimages_attributes:[
-          :id,
+          :id
           :thumbnail,
           :role,
           :prototype_id,
           :_destroy]).merge(
-            user_id: current_user.id,
-            tag_list: params[:prototype][:tag])
+          tag_list: params[:prototype][:tag])
     end
 end
