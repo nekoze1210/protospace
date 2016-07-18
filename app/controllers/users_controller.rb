@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
+before_action :authenticate_user!, except: :show
 before_action :set_user, only: [:show, :edit, :update]
+
   def show
     @protos = @user.prototypes.includes(:user).order('created_at DESC').page(params[:page]).per(12)
   end
