@@ -1,4 +1,5 @@
 class PrototypesController < ApplicationController
+  before_action :authenticate_user!, except:[:index, :show]
   before_action :set_proto, except: [:index, :new, :create]
 
   def index
@@ -19,7 +20,7 @@ class PrototypesController < ApplicationController
   end
 
   def create
-    @proto = Prototype.new(proto_params)
+    @proto = current_user.prototypes.new(proto_params)
     if @proto.save
       redirect_to root_path, notice: 'Your prototype has created successfully.'
     else
@@ -62,7 +63,6 @@ class PrototypesController < ApplicationController
           :role,
           :prototype_id,
           :_destroy]).merge(
-            user_id: current_user.id,
-            tag_list: params[:prototype][:tag])
+          tag_list: params[:prototype][:tag])
     end
 end
