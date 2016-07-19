@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe UsersController do
 
-  describe 'with User' do
+  context 'with User' do
     login_user
     let(:user){ create(:user) }
 
@@ -54,7 +54,7 @@ describe UsersController do
     end
   end
 
-  describe 'without User' do
+  context 'without User' do
     let(:user){ create(:user) }
     describe 'GET #edit' do
       it 'redirects sign_in page' do
