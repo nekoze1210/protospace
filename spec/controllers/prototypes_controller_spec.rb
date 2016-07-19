@@ -1,18 +1,19 @@
 require 'rails_helper'
 describe PrototypesController do
-  describe 'with User' do
+  context 'with User' do
     login_user
     let(:prototype){ create(:prototype) }
 
     describe 'GET #index' do
+      let(:protos){ create_list(:prototype, 1) }
+      before do
+        get :index, protos: protos
+      end
       it 'assigns the requested prototypes to @protos' do
-        protos = create_list(:prototype, 1)
-        get :index
-        expect(assigns(:protos)).to match(protos.sort{ |a, b| b.created_at <=> a.created_at } )
+        expect(assigns(:protos)).to match( protos.sort{ |a, b| b.created_at <=> a.created_at } )
       end
 
       it "renders the 'index' template" do
-        get :index
         expect(response).to render_template :index
       end
     end
@@ -25,7 +26,7 @@ describe PrototypesController do
     end
 
     describe 'POST #create' do
-      describe 'with valid attributes' do
+      context 'with valid attributes' do
         let(:proto) { attributes_for(:prototype, user_id:'1') }
         it 'saves the new prototype in database' do
           expect{
@@ -44,7 +45,7 @@ describe PrototypesController do
         end
       end
 
-      describe 'with invalid attributes' do
+      context 'with invalid attributes' do
       let(:proto) { attributes_for(:prototype, user_id:'1', title: nil) }
         it 'does not save the new prototype in database' do
           expect{
@@ -103,7 +104,7 @@ describe PrototypesController do
     end
 
     describe 'PATCH #update' do
-      describe 'with valid attributes' do
+      context 'with valid attributes' do
         before do
           patch :update, id: prototype.id,
           prototype: attributes_for(:prototype, title: 'updated')
@@ -125,7 +126,7 @@ describe PrototypesController do
     end
   end
 
-  describe 'without User' do
+  context 'without User' do
     let(:prototype){ create(:prototype) }
 
     describe 'GET #new' do
