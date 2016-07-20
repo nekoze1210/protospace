@@ -8,7 +8,7 @@ require 'rspec/rails'
 require 'devise'
 require 'capybara/poltergeist'
 require 'selenium-webdriver'
-Capybara.javascript_driver = :poltergeist
+Capybara.javascript_driver = :selenium
 Capybara.default_max_wait_time = 5
 # Add additional requires below this line. Rails is not loaded until this point!
 
