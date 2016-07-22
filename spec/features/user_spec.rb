@@ -36,9 +36,9 @@ RSpec.feature 'Sign in', type: :feature do
     sign_in
     click_on 'NEW PROTO'
     fill_in 'Title', with: proto.title
-    attach_file "prototype[protoimages_attributes][0][thumbnail]", "#{Rails.root}/tmp/capybara/sample.png"
+    attach_file "prototype[protoimages_attributes][0][thumbnail]", "#{Rails.root}/tmp/capybara/sample.png", visible: false
     1.upto(3) do |i|
-      attach_file "prototype[protoimages_attributes][#{i}][thumbnail]", "#{Rails.root}/tmp/capybara/sample.png"
+      attach_file "prototype[protoimages_attributes][#{i}][thumbnail]", "#{Rails.root}/tmp/capybara/sample.png", visible: false
     end
     fill_in 'Catch Copy', with: proto.catch_copy
     fill_in 'Concept', with: proto.concept
