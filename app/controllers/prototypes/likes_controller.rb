@@ -11,12 +11,12 @@ class Prototypes::LikesController < ApplicationController
   end
 
   private
-    def set_proto
-      @proto = Prototype.find(params[:prototype_id])
-    end
+  def set_proto
+    @proto = Prototype.find(params[:prototype_id])
+  end
 
-    def like_params
-      params.permit(
-        prototype_id: params[:prototype_id]).merge(user_id: current_user.id)
-    end
+  def like_params
+    params.permit(
+      prototype_id: params[:prototype_id]).merge(user_id: current_user.id)
+  end
 end

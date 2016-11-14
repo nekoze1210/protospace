@@ -9,7 +9,7 @@
           .cover-image-upload.js-preview-images
             = f.fields_for :protoimages do |i|
               = i.file_field :thumbnail, class: 'img img-responstive'
-              = i.hidden_field :role, value: :main
+              = i.hidden_field :role, value: "main"
           .col-md-12
             %ul.proto-sub-list.list-group
               - 3.times do
@@ -17,7 +17,7 @@
                   %li.list-group-item.col-md-4
                     .image-upload.js-preview-images
                       = i.file_field :thumbnail
-                      = i.hidden_field :role, value: :sub
+                      = i.hidden_field :role, value: "sub"
               / %li.list-group-item.col-md-4
               /   .image-upload-plus
               /     %span + JS時に使用

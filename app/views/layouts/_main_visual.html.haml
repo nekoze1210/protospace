@@ -6,8 +6,8 @@
   .container
     .row
       %ul.nav.nav-pills.col-lg-11
-        %li.active{role: "presentation"}
+        %li{class: active_class_for('prototypes/popular')}
           = link_to 'Popular PROTO', popular_index_path
-        %li{role: "presentation"}
+        %li{class:  active_class_for('prototypes/newest')}
           = link_to 'Newest PROTO', newest_index_path
       = link_to 'View Tags', tags_path,type:' button', class:'btn btn-default col-lg-1'

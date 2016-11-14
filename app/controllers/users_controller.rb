@@ -3,7 +3,7 @@ before_action :authenticate_user!, except: :show
 before_action :set_user, only: [:show, :edit, :update]
 
   def show
-    @protos = @user.prototypes.includes(:user).order('created_at DESC').page(params[:page]).per(12)
+    @protos = @user.prototypes.order('created_at DESC').page(params[:page]).per(12)
   end
 
   def edit
@@ -20,6 +20,6 @@ before_action :set_user, only: [:show, :edit, :update]
   end
 
   def user_params
-    params.require(:user).permit(:nickname, :email, :thumbnail, :profile, :member, :work, :avatar)
+    params.require(:user).permit(:nickname, :email, :profile, :member, :work, :avatar)
   end
 end

@@ -325,7 +325,6 @@ GEM
       json (~> 1.4)
     responders (2.2.0)
       railties (>= 4.2.0, < 5.1)
-    rmagick (2.15.4)
     rspec-core (3.5.0)
       rspec-support (~> 3.5.0)
     rspec-expectations (3.5.0)
@@ -421,7 +420,6 @@ DEPENDENCIES
   poltergeist
   pry-rails
   rails (= 4.2.5)
-  rmagick
   rspec-rails
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)

@@ -10,6 +10,8 @@
             .proto-meta
               .proto-user
                 = link_to "by #{proto.user.nickname}", user_path(proto.user)
+              .proto-user.text-right
+                = link_to 'delete', prototype_path(proto), method: :delete
               .proto-posted
                 = proto.created_at.strftime('%b %d')
             %ul.proto-tag-list.list-inline

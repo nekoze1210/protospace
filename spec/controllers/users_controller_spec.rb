@@ -35,6 +35,7 @@ describe UsersController do
         patch :update, id: user.id,
         user: attributes_for(:user, nickname: 'updated')
       end
+
       it 'assigns the requested user to @user' do
         expect(assigns(:user)).to eq user
       end
